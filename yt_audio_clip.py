@@ -45,7 +45,7 @@ def fmt(seconds: float) -> str:
 
 
 def download_clip(url: str, start: float, end: float | None, audio_format: str,
-                  quality: str, output_dir: str) -> None:
+                  quality: str, output_dir: str, extra_opts: dict | None = None) -> None:
     end_value = end if end is not None else float("inf")
     label = f"{fmt(start)}_to_{fmt(end) if end is not None else 'end'}"
 
@@ -65,6 +65,9 @@ def download_clip(url: str, start: float, end: float | None, audio_format: str,
         ],
         "noplaylist": True,
     }
+
+    if extra_opts:  # used by the GUI to receive log messages
+        ydl_opts.update(extra_opts)
 
     with YoutubeDL(ydl_opts) as ydl:
         ydl.download([url])

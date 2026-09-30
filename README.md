@@ -4,7 +4,8 @@ A small Python program that downloads **only a selected section** of a YouTube v
 
 - Choose the start and end time
 - Choose the format (MP3, M4A, WAV, FLAC, Opus, AAC) and bitrate
-- Works by double-clicking (asks you questions) or from the command line
+- **Window version (GUI)**: type in the URL and times, click Download, no commands needed
+- Or use it from the command line, or by double-clicking the script (it asks you questions)
 - Only the selected section is downloaded, not the whole video
 
 > **Legal note:** Only download content you have the right to use, or for personal use where that is permitted. Downloading from YouTube may violate its Terms of Service. You are responsible for how you use this tool.
@@ -50,17 +51,28 @@ YouTube sometimes requires a JavaScript runtime. If you get "video not available
 - **Mac:** `brew install deno`
 
 ### Step 5: Get the program
-Download `yt_audio_clip.py` from this repository (click the file, then the download icon), or clone the repository:
+Download `yt_audio_clip.py` and `yt_audio_clip_gui.py` from this repository (click each file, then the download icon) and save them **in the same folder**. Or clone the repository:
 
 ```
-git clone https://github.com/FioFiasco/youtube-audio-clipper.git
+git clone https://github.com/YOUR-USERNAME/youtube-audio-clipper.git
 ```
 
 ---
 
 ## 2. How to use it
 
-### Option A: Double-click (easiest)
+### Option A: Window version (easiest)
+Keep `yt_audio_clip_gui.py` and `yt_audio_clip.py` **in the same folder**, then double-click `yt_audio_clip_gui.py` (or run `python yt_audio_clip_gui.py`).
+
+1. Paste the YouTube address.
+2. Enter the start time (e.g. `4:30`) and the end time (e.g. `8:35`). Leave the end empty to go to the end of the video.
+3. Choose the format and bitrate, and the folder to save to (default: your Downloads folder).
+4. Click **Download**. The log shows what is happening. When it says "Done!", click **Open folder**.
+
+A black console window may open behind the program. Leave it open; closing it closes the program.
+On Windows, tkinter (the window toolkit) is included with the normal Python installer. On Linux you may need `sudo apt install python3-tk`.
+
+### Option B: Double-click the command-line script
 Double-click `yt_audio_clip.py`. It asks you for:
 
 1. The YouTube URL
@@ -71,7 +83,7 @@ Double-click `yt_audio_clip.py`. It asks you for:
 
 The audio file is saved **in the same folder as the script**. The window stays open at the end so you can read the result.
 
-### Option B: Command line
+### Option C: Command line
 
 ```
 python yt_audio_clip.py "https://www.youtube.com/watch?v=XXXX" -s 4:30 -e 8:35
@@ -116,6 +128,7 @@ python yt_audio_clip.py "URL" -s 4:30 -o "C:\Users\YourName\Music"
 | `This video is unavailable` / `Video not available` (but it plays in your browser) | **Check the URL first.** A single wrong character in the video ID gives this same error. Copy the address directly from your browser's address bar (not from a chat or web page, which can add formatting like `[ ]( )`), keep it in quotes, and remove extras like `&list=...`. If the URL is right, update yt-dlp: `pip install -U yt-dlp`, and install Deno (Step 4). |
 | `ffmpeg exited with code 4294967283` | Permission denied when saving. Use the latest version of the script, or save to a normal folder with `-o`. |
 | `ffmpeg not found` | Install ffmpeg (Step 3) and reopen the terminal. |
+| The window version doesn't open / `No module named 'yt_audio_clip'` | Keep `yt_audio_clip_gui.py` and `yt_audio_clip.py` together in the same folder. |
 | Window closes immediately | Use the latest version of the script, or run it from a terminal to see the message. |
 | "The system cannot accept the time entered" | The script had already stopped and you were typing into the Windows prompt. Fix the earlier error first. |
 | Stopped working after weeks or months | YouTube changes often. Run `pip install -U yt-dlp`. |
@@ -126,10 +139,10 @@ python yt_audio_clip.py "URL" -s 4:30 -o "C:\Users\YourName\Music"
 
 The script uses [yt-dlp](https://github.com/yt-dlp/yt-dlp) to download just the chosen time range and [ffmpeg](https://ffmpeg.org/) to convert it to your chosen audio format.
 
-## License
-
-MIT, see [LICENSE](LICENSE). yt-dlp and ffmpeg have their own licenses.
-
 ## Support
 
 If this tool saved you time, you can support its development via PayPal: https://www.paypal.me/michaelfiolka69
+
+## License
+
+MIT, see [LICENSE](LICENSE). yt-dlp and ffmpeg have their own licenses.
