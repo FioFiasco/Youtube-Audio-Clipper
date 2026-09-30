@@ -129,3 +129,7 @@ The script uses [yt-dlp](https://github.com/yt-dlp/yt-dlp) to download just the 
 ## License
 
 MIT, see [LICENSE](LICENSE). yt-dlp and ffmpeg have their own licenses.
+
+## Support
+
+If this tool saved you time, you can support its development via PayPal: https://www.paypal.me/michaelfiolka69
