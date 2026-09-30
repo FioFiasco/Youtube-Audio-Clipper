@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.mp3
+*.m4a
+*.wav
+*.flac
+*.opus
+*.aac
+*.part
+*.webm
